@@ -1,0 +1,7 @@
+/client/node_modules/*
+/docs/*
+/server/node_modules/*
+/server/.env
+/client/.env
+COMPLETE_FLOW.md
+REDUX_SETUP_FIXED.md
