@@ -38,3 +38,6 @@ export async function generateNotes(payload) {
         return null;
     }
 }
+
+export async function downloadPDF(result) {
+}
