@@ -25,7 +25,7 @@ const RechartSetup = ({ charts }) => {
   if (!charts || charts.length === 0) return null;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 w-full">
       {charts.map((chart, index) => (
         <div
           key={index}
@@ -34,7 +34,7 @@ const RechartSetup = ({ charts }) => {
           <h4 className="font-semibold text-gray-800 mb-3 text-lg">
             📊 {chart.title}
           </h4>
-          <div className="h-72">
+          <div className="h-72 w-full min-w-0 min-h-[18rem]">
             <ResponsiveContainer width="100%" height="100%">
               {chart.type === "bar" && (
                 <BarChart data={chart.data}>

@@ -25,7 +25,6 @@ export async function validateLogin(req, res, next) {
 
         req.userid = payload.userid;
 
-
         next();
 
     } catch (error) {

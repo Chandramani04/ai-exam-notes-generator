@@ -5,6 +5,7 @@ import Auth from "./pages/Auth";
 import { getCurrentUser } from "./services/api.js";
 import { useDispatch, useSelector } from "react-redux";
 import Notes from "./components/Notes.jsx";
+import History from "./pages/History.jsx";
 
 export const serverBaseUrl = "http://localhost:8000";
 
@@ -36,6 +37,10 @@ const App = () => {
         <Route
           path="/notes"
           element={userData ? <Notes /> : <Navigate to="/auth" replace />}
+        />
+        <Route
+          path="/history"
+          element={userData ? <History /> : <Navigate to="/auth" replace />}
         />
       </Routes>
     </>
