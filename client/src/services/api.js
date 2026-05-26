@@ -40,4 +40,23 @@ export async function generateNotes(payload) {
 }
 
 export async function downloadPDF(result) {
+    try {
+        const res = await axios.post(`${serverBaseUrl}/api/pdf/generatePdf`, { result }, { withCredentials: true , responseType: 'blob' });
+        const data = res.data;
+
+        const blob = new Blob([data], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'notes.pdf');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+
+
+    } catch (error) {
+        console.log("Error downloading PDF:", error);
+        return null;
+    }
 }

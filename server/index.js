@@ -8,6 +8,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import userRouter from "./routes/user.route.js";
 import notesRouter from "./routes/notes.route.js";
+import pdfDownloadRouter from "./routes/pdfDownload.route.js";
 
 
 const app = express();
@@ -35,6 +36,7 @@ app.get("/", (req, res) => {
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
 app.use('/api/notes', notesRouter)
+app.use('/api/pdf', pdfDownloadRouter);
 
 
 app.listen(PORT, () => {
