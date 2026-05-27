@@ -29,7 +29,7 @@ app.use(cookieParser())
 // }
 app.use(cors(
     {
-        origin: process.env.CLIENT_URL, // allow requests only from this origin
+        origin: "https://ai-exam-notes-generator-client-zmxe.onrender.com", // allow requests only from this origin
         credentials: true, // allow cookies to be sent in cross-origin requests
         methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], // OPTIONS is needed for preflight request
     }
