@@ -21,9 +21,13 @@ const Navbar = () => {
   // Handle User Sign Out
   const handleSignOut = async () => {
     try {
-      await axios.post(serverBaseUrl + "/api/auth/logout", {
-        withCredentials: true,
-      });
+     await axios.post(
+       serverBaseUrl + "/api/auth/logout",
+       {},
+       {
+         withCredentials: true,
+       },
+     );
       dispatch(setUserData(null));
       navigate("/auth");
     } catch (error) {
