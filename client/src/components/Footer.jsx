@@ -14,9 +14,13 @@ const Footer = () => {
   // Sign out logic implemented directly in the footer
   const handleSignOut = async () => {
     try {
-      await axios.get(serverBaseUrl + "/api/auth/logout", {
-        withCredentials: true,
-      });
+      await axios.post(
+        serverBaseUrl + "/api/auth/logout",
+        {},
+        {
+          withCredentials: true,
+        },
+      );
       dispatch(setUserData(null));
       navigate("/auth");
     } catch (error) {
