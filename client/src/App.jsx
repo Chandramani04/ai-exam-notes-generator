@@ -6,6 +6,9 @@ import { getCurrentUser } from "./services/api.js";
 import { useDispatch, useSelector } from "react-redux";
 import Notes from "./components/Notes.jsx";
 import History from "./pages/History.jsx";
+import PaymentSucess from "./pages/PaymentSucess.jsx";
+import PaymentFailed from "./pages/PaymentFailed.jsx";
+import Pricing from "./pages/Pricing.jsx";
 
 export const serverBaseUrl = "http://localhost:8000";
 
@@ -41,6 +44,25 @@ const App = () => {
         <Route
           path="/history"
           element={userData ? <History /> : <Navigate to="/auth" replace />}
+        />
+        <Route
+          path="/pricing"
+          element={userData ? <Pricing /> : <Navigate to="/auth" replace />}
+        />
+
+        <Route
+          path="/payment-success"
+          element={
+            <PaymentSucess />
+            // userData ? <PaymentSucess /> : <Navigate to="/auth" replace />
+          }
+        />
+        <Route
+          path="/payment-failed"
+          element={
+            <PaymentFailed />
+            // userData ? <PaymentFailed /> : <Navigate to="/auth" replace />
+          }
         />
       </Routes>
     </>

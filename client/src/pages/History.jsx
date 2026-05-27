@@ -61,7 +61,6 @@ const History = () => {
       const response = await axios.get(url, {
         withCredentials: true,
       });
-      console.log("Single note response:", response.data);
 
       // Update state with the specific note's deeply nested JSON content
       setSelectedNote(response.data.content);

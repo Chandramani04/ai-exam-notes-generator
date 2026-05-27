@@ -9,13 +9,17 @@ import cookieParser from "cookie-parser";
 import userRouter from "./routes/user.route.js";
 import notesRouter from "./routes/notes.route.js";
 import pdfDownloadRouter from "./routes/pdfDownload.route.js";
+import creditsRouter from "./routes/credits.routes.js";
+import { stripeWebhook } from "./controllers/credits.controller.js";
 
 
 const app = express();
 const PORT = process.env.PORT || 3000
 
-// middlewares
+// stripe webhook needs raw body, so we need to add this middleware before express.json() 
+app.post('/api/credits/webhook', express.raw({ type: 'application/json' }), stripeWebhook);
 
+// middlewares
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors(
@@ -37,6 +41,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
 app.use('/api/notes', notesRouter)
 app.use('/api/pdf', pdfDownloadRouter);
+app.use('/api/credits', creditsRouter);
 
 
 app.listen(PORT, () => {
