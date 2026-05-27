@@ -13,8 +13,17 @@ export async function getCurrentUser(dispatch) {
         }
         return data;
     } catch (error) {
-        console.error("Error fetching current user:", error);
-        dispatch(setUserData(null));
+
+        console.error(error);
+
+        if (
+            error.response &&
+            (error.response.status === 401 ||
+                error.response.status === 403)
+        ) {
+            dispatch(setUserData(null));
+        }
+
         return null;
     }
 }
