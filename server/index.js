@@ -47,5 +47,5 @@ app.use('/api/credits', creditsRouter);
 app.listen(PORT, () => {
     console.log("server running on PORT = ", PORT);
     dbConnect();
-    console.log("GEMINI_API_KEY from index.js:", process.env.GEMINI_API_KEY); // log the API key to verify it's being read correctly
+    // console.log("GEMINI_API_KEY from index.js:", process.env.GEMINI_API_KEY); // log the API key to verify it's being read correctly
 })

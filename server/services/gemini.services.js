@@ -5,7 +5,7 @@ dotenv.config();
 const GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent"
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY
 
-console.log("GEMINI_API_KEY from gemini.services.js:", process.env.GEMINI_API_KEY);
+// console.log("GEMINI_API_KEY from gemini.services.js:", process.env.GEMINI_API_KEY);
 
 export const generateGeminiResponse = async (prompt) => {
     try {
