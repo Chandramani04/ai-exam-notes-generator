@@ -27,6 +27,7 @@ export async function googleAuth(req, res) {
             secure: true,
             sameSite: "none",
             path: "/", // ensure cookie is sent in all requests to the server
+            domain : ".onrender.com",
             maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
         });
         return res.status(200).json({

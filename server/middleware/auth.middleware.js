@@ -12,6 +12,7 @@ export async function validateLogin(req, res, next) {
             })
         }
         const payload = verifyToken(token);
+        console.log("Payload from token:", payload);
         if (!payload.userid) {
             return res.status(403).json({
                 success: false,
