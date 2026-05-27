@@ -2,34 +2,25 @@ import React from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "motion/react";
 import { FcGoogle } from "react-icons/fc";
-// eslint-disable-next-line no-unused-vars
 import { auth, provider } from "../utils/firebase";
 import { serverBaseUrl } from "../App.jsx";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setUserData } from "../redux/userSlice";
+import { signInWithPopup } from "firebase/auth";
 
 function Auth() {
   const dispatch = useDispatch();
 
   const handleGoogleSignIn = async () => {
     try {
-      // const response = await signInWithPopup(auth, provider);
-      // const userName = response.user.displayName;
-      // const userEmail = response.user.email;
+      const response = await signInWithPopup(auth, provider);
+      const userName = response.user.displayName;
+      const userEmail = response.user.email;
 
-      const userName = "Test User3";
-      const userEmail = "testuser3@example.com";
+      // const userName = "Test User3";
+      // const userEmail = "testuser3@example.com";
 
-      //   const res = await fetch(`${serverBaseUrl}/api/auth/google`, {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify({ name: userName, email: userEmail }),
-      //     credentials: "include", // include cookies in the request
-      //   });
-      //   const data = await res.json();
 
       const res = await axios({
         method: "POST",

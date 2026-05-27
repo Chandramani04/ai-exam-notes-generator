@@ -9,8 +9,10 @@ import History from "./pages/History.jsx";
 import PaymentSucess from "./pages/PaymentSucess.jsx";
 import PaymentFailed from "./pages/PaymentFailed.jsx";
 import Pricing from "./pages/Pricing.jsx";
+import { baseUrl } from "./utils/constants.js";
 
-export const serverBaseUrl = "http://localhost:8000";
+// export const serverBaseUrl = "http://localhost:8000";
+export const serverBaseUrl = baseUrl;
 
 const App = () => {
   const dispatch = useDispatch();
