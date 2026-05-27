@@ -3,6 +3,7 @@ import {verifyToken } from "../lib/auth.js";
 
 export async function validateLogin(req, res, next) {
     try {
+        console.log(req.cookies);
         const token = req.cookies.token;
         if (!token) {
             return res.status(403).json({
