@@ -11,9 +11,9 @@ import PaymentFailed from "./pages/PaymentFailed.jsx";
 import Pricing from "./pages/Pricing.jsx";
 import { baseUrl } from "./utils/constants.js";
 
-// export const serverBaseUrl = "http://localhost:8000";
 export const serverBaseUrl = baseUrl;
 
+// export const serverBaseUrl = "http://localhost:8000";
 const App = () => {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.user);
