@@ -83,7 +83,7 @@ const MermaidSetup = ({ diagram }) => {
 
         // Clean the raw string provided by Gemini [13]
         const safeChart = autoFixedBadNotes(diagram);
-        console.log("Cleaned Mermaid Diagram:", safeChart); // Debug log to verify the cleaned diagram data
+        // console.log("Cleaned Mermaid Diagram:", safeChart); // Debug log to verify the cleaned diagram data
         // Render the diagram into an SVG [16]
         const { svg } = await mermaid.render(uniqueId, safeChart);
 

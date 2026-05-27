@@ -1,12 +1,12 @@
 export const buildPrompt = ({
-    topic,
-    classLevel,
-    examType,
-    revisionMode,
-    includeDiagram,
-    includeChart
+  topic,
+  classLevel,
+  examType,
+  revisionMode,
+  includeDiagram,
+  includeChart
 }) => {
-    return `
+  return `
 You are a STRICT JSON generator for an exam preparation system.
 
 ⚠️ VERY IMPORTANT:
@@ -66,13 +66,58 @@ IMPORTANCE RULES:
 
 DIAGRAM RULES:
 - If INCLUDE DIAGRAM is YES:
-  - diagram.data MUST be a SINGLE STRING
-  - Valid Mermaid syntax only
-  - Must start with: graph TD
-  - Wrap EVERY node label in square brackets [ ]
-  - Do NOT use special characters inside labels
+  - diagram.data MUST be STRICT VALID Mermaid syntax
+  - diagram.data MUST be a SINGLE escaped JSON string
+  - diagram.data MUST ALWAYS start exactly with:
+    graph TD
+
+  - EVERY node MUST follow this format:
+    A[Label]
+    B[Another Label]
+
+  - ALL edges MUST follow this format:
+    A --> B
+
+  - NEVER write plain text nodes like:
+    Users --> Web Portal
+
+  - ALWAYS assign node IDs:
+    A, B, C, D...
+
+  - VALID example:
+    graph TD
+    A[User] --> B[Web Portal]
+    B --> C[Database]
+
+  - INVALID example:
+    graph TD User --> Web Portal
+
+  - NEVER place node labels directly after graph TD
+  - NEVER use parentheses ()
+  - NEVER use special symbols inside labels
+  - NEVER generate malformed Mermaid
+
+  - Labels may contain:
+    - letters
+    - numbers
+    - spaces
+
+  - Every line after graph TD must contain either:
+    - node declaration
+    - edge declaration
+
+  - Keep diagrams SIMPLE and SMALL
+  - Maximum 8 nodes
+
 - If INCLUDE DIAGRAM is NO:
   - diagram.data MUST be ""
+  
+MERMAID VALIDATION RULES:
+- graph TD must be followed by a newline
+- Every edge must connect node IDs only
+- Node labels must always be inside square brackets
+- Do not generate invalid Mermaid syntax
+- Output must be directly renderable by Mermaid without preprocessing
 
 CHART RULES (RECHARTS):
 - If INCLUDE CHARTS is YES:
