@@ -23,13 +23,13 @@ app.post('/api/credits/webhook', express.raw({ type: 'application/json' }), stri
 app.use(express.json())
 app.use(cookieParser())
 
-let origin = process.env.CLIENT_URL;
-if (!origin) {
-    origin = "http://localhost:5173";
-}
+// let origin = process.env.CLIENT_URL;
+// if (!origin) {
+//     origin = "http://localhost:5173";
+// }
 app.use(cors(
     {
-        origin: origin, // allow requests only from this origin
+        origin: process.env.CLIENT_URL, // allow requests only from this origin
         credentials: true, // allow cookies to be sent in cross-origin requests
         methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], // OPTIONS is needed for preflight request
     }
